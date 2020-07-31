@@ -75,6 +75,7 @@ export default class SignIn extends AuthPiece<ISignInProps, ISignInState> {
 				} else {
 					this.error(err);
 				}
+				this.changeState('signIn')
 			});
 	}
 

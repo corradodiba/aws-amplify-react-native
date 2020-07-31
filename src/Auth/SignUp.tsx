@@ -229,12 +229,16 @@ export default class SignUp extends AuthPiece<ISignUpProps, ISignUpState> {
 		}
 
 		logger.debug('Signing up with', signup_info);
+		this.changeState('loading')
 		Auth.signUp(signup_info)
 			.then(data => {
 				// @ts-ignore
 				this.changeState('confirmSignUp', data.user.username);
 			})
-			.catch(err => this.error(err));
+			.catch(err => {
+				this.changeState('signUp')
+				return this.error(err)
+			});
 	}
 
 	showComponent(theme) {

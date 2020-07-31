@@ -236,11 +236,14 @@ var SignUp = /*#__PURE__*/function (_AuthPiece) {
       }
 
       logger.debug('Signing up with', signup_info);
+      this.changeState('loading');
 
       _awsAmplify.Auth.signUp(signup_info).then(function (data) {
         // @ts-ignore
         _this3.changeState('confirmSignUp', data.user.username);
       })["catch"](function (err) {
+        _this3.changeState('signUp');
+
         return _this3.error(err);
       });
     }

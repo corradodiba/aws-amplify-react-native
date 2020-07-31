@@ -56,9 +56,13 @@ export default class ConfirmSignUp extends AuthPiece<
 		const { code } = this.state;
 		const username = this.getUsernameFromInput();
 		logger.debug('Confirm Sign Up for ' + username);
+		this.changeState('loading')
 		Auth.confirmSignUp(username, code)
 			.then(data => this.changeState('signedUp'))
-			.catch(err => this.error(err));
+			.catch(err => {
+				this.changeState('signUp')
+				return this.error(err)
+			});
 	}
 
 	resend() {

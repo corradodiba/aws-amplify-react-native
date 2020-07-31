@@ -73,10 +73,13 @@ var ConfirmSignUp = /*#__PURE__*/function (_AuthPiece) {
       var code = this.state.code;
       var username = this.getUsernameFromInput();
       logger.debug('Confirm Sign Up for ' + username);
+      this.changeState('loading');
 
       _awsAmplify.Auth.confirmSignUp(username, code).then(function (data) {
         return _this2.changeState('signedUp');
       })["catch"](function (err) {
+        _this2.changeState('signUp');
+
         return _this2.error(err);
       });
     }

@@ -95,6 +95,8 @@ var SignIn = /*#__PURE__*/function (_AuthPiece) {
         } else {
           _this2.error(err);
         }
+
+        _this2.changeState('signIn');
       });
     }
   }, {
