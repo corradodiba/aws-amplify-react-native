@@ -236,8 +236,8 @@ export default class SignUp extends AuthPiece<ISignUpProps, ISignUpState> {
 				this.changeState('confirmSignUp', data.user.username);
 			})
 			.catch(err => {
-				this.changeState('signUp')
-				return this.error(err)
+				this.changeState(undefined)
+				this.error(err)
 			});
 	}
 
