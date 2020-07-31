@@ -242,9 +242,9 @@ var SignUp = /*#__PURE__*/function (_AuthPiece) {
         // @ts-ignore
         _this3.changeState('confirmSignUp', data.user.username);
       })["catch"](function (err) {
-        _this3.changeState('signUp');
+        _this3.changeState('signUp', signup_info);
 
-        return _this3.error(err);
+        _this3.error(err);
       });
     }
   }, {
